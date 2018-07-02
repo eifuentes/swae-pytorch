@@ -1,10 +1,14 @@
 # Sliced-Wasserstein Autoencoder - Pytorch
 Implementation of ["Sliced-Wasserstein Autoencoder: An Embarrassingly Simple Generative Model"](https://arxiv.org/abs/1804.01947) using PyTorch.
 
-### Requirements
+## Quick Start
 
-- `python 3.6`
-- `pytorch 0.4.0`
+This repo requires `Python 3.x`
 
-### References
+To quickly get started training with the Sliced Wasserstein Autoencoder and run the MNIST example install the `swae` python package and example dependencies.
+
+1. `pip install swae/``
+2. `pip install -r requirements.txt`
+
+## References
 Based on the original Keras implementation by [skolouri](https://github.com/skolouri/swae).

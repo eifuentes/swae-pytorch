@@ -26,6 +26,8 @@ def main():
                         help='Latent Distribution (default: circle)')
     parser.add_argument('--no-cuda', action='store_true', default=False,
                         help='disables CUDA training')
+    parser.add_argument('--num_workers', type=int, default=8, metavar='N',
+                        help='number of dataloader workers if device is CPU (default: 8)')
     parser.add_argument('--seed', type=int, default=7, metavar='S',
                         help='random seed (default: 7)')
     parser.add_argument('--log-interval', type=int, default=10, metavar='N',
@@ -36,20 +38,20 @@ def main():
     # determine device and device dep. args
     use_cuda = not args.no_cuda and torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")
-    kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
+    dataloader_kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {'num_workers': args.num_workers, 'pin_memory': False}
     # log args
     print('batch size {}\nepochs {}\nRMSprop lr {} alpha {}\ndistribution {}\nusing device {}\nseed set to {}'.format(
-        args.batch_size, args.epochs, args.lr, args.alpha, args.distribution, device, args.seed
+        args.batch_size, args.epochs, args.lr, args.alpha, args.distribution, device.type, args.seed
     ))
     # build train and test set data loaders
     train_loader = torch.utils.data.DataLoader(
         datasets.MNIST('../data', train=True, download=True,
                        transform=transforms.Compose([transforms.ToTensor()])),
-        batch_size=args.batch_size, shuffle=True, **kwargs)
+        batch_size=args.batch_size, shuffle=True, **dataloader_kwargs)
     test_loader = torch.utils.data.DataLoader(
         datasets.MNIST('../data', train=False, download=True,
                        transform=transforms.Compose([transforms.ToTensor()])),
-        batch_size=64, shuffle=False, **kwargs)
+        batch_size=64, shuffle=False, **dataloader_kwargs)
     # create encoder and decoder
     model = MNISTAutoencoder().to(device)
     print(model)
