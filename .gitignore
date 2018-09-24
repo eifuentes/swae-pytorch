@@ -1,5 +1,15 @@
+# 3rd Party Files
+.floydexpt
+.floydignore
+**/*.floyddata
+**/*.zip
+**/*.mdb
+**/*cache*
+
+
 # Mac OS
 *.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

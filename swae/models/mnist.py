@@ -3,7 +3,14 @@ import torch.nn.functional as F
 
 
 class MNISTEncoder(nn.Module):
-    """MNIST Encoder from Original Paper Keras based Implementation."""
+    """ MNIST Encoder from Original Paper's Keras based Implementation.
+
+        Args:
+            init_num_filters (int): initial number of filters from encoder image channels
+            lrelu_slope (float): positive number indicating LeakyReLU negative slope
+            inter_fc_dim (int): intermediate fully connected dimensionality prior to embedding layer
+            embedding_dim (int): embedding dimensionality
+    """
     def __init__(self, init_num_filters=16, lrelu_slope=0.2, inter_fc_dim=128, embedding_dim=2):
         super(MNISTEncoder, self).__init__()
 
@@ -49,7 +56,14 @@ class MNISTEncoder(nn.Module):
 
 
 class MNISTDecoder(nn.Module):
-    """MNIST Decoder from Original Paper Implementation."""
+    """ MNIST Decoder from Original Paper's Keras based Implementation.
+
+        Args:
+            init_num_filters (int): initial number of filters from encoder image channels
+            lrelu_slope (float): positive number indicating LeakyReLU negative slope
+            inter_fc_dim (int): intermediate fully connected dimensionality prior to embedding layer
+            embedding_dim (int): embedding dimensionality
+    """
     def __init__(self, init_num_filters=16, lrelu_slope=0.2, inter_fc_dim=128, embedding_dim=2):
         super(MNISTDecoder, self).__init__()
 
@@ -97,7 +111,14 @@ class MNISTDecoder(nn.Module):
 
 
 class MNISTAutoencoder(nn.Module):
-    """MNIST Autoencoder from Original Paper Implementation."""
+    """ MNIST Autoencoder from Original Paper's Keras based Implementation.
+
+        Args:
+            init_num_filters (int): initial number of filters from encoder image channels
+            lrelu_slope (float): positive number indicating LeakyReLU negative slope
+            inter_fc_dim (int): intermediate fully connected dimensionality prior to embedding layer
+            embedding_dim (int): embedding dimensionality
+    """
     def __init__(self, init_num_filters=16, lrelu_slope=0.2, inter_fc_dim=128, embedding_dim=2):
         super(MNISTAutoencoder, self).__init__()
 

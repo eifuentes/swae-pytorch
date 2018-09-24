@@ -1,0 +1,12 @@
+env: pytorch-0.4
+machine: cpu
+task:
+ train-mnist:
+   description: mnist swae train
+   command: pip install -e . && python examples/mnist.py --distribution ring
+ train-lsun:
+   description: lsun swae train
+   input:
+     - source: eifuentes/datasets/lsun-church/1
+       destination: input
+   command: pip install -e . && python examples/lsun.py

@@ -6,3 +6,4 @@ torchvision==0.2.1
 scikit-learn==0.19.1
 scipy==1.1.0
 matplotlib==2.2.2
+lmdb
